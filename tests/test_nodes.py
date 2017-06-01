@@ -83,5 +83,5 @@ def test_regex_invalid():
     node = RegexNode(value=value)
     assert not node.is_valid()
     assert node._errors[0].title == 'Invalid regex'
-    assert node._errors[0].description == 'unexpected end of regular expression'
+    assert node._errors[0].description in ('unexpected end of regular expression', 'unterminated character set at position 0')
     assert node.regex == None
