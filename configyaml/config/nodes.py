@@ -66,7 +66,7 @@ class StringNode(AbstractNode):
 
 
 class RegexNode(StringNode):
-    """A node that must validate as a string"""
+    """A node that must validate as a regular expression"""
     def _validate_value(self):
         try:
             re.compile(self._value)
