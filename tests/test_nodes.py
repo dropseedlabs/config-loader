@@ -75,6 +75,7 @@ def test_regex_valid():
     value = '.*'
     node = RegexNode(value=value)
     assert node.is_valid()
+    assert node.regex != None
 
 
 def test_regex_invalid():
@@ -83,3 +84,4 @@ def test_regex_invalid():
     assert not node.is_valid()
     assert node._errors[0].title == 'Invalid regex'
     assert node._errors[0].description == 'unexpected end of regular expression'
+    assert node.regex == None

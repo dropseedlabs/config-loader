@@ -67,9 +67,13 @@ class StringNode(AbstractNode):
 
 class RegexNode(StringNode):
     """A node that must validate as a regular expression"""
+    def __init__(self, *args, **kwargs):
+        self.regex = None
+        super(RegexNode, self).__init__(*args, **kwargs)
+
     def _validate_value(self):
         try:
-            re.compile(self._value)
+            self.regex = re.compile(self._value)
         except re.error as e:
             self._add_error(title='Invalid regex', description=str(e))
 
